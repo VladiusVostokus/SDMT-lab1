@@ -5,4 +5,5 @@ const fs = require('fs');
 const buffer = fs.readFileSync('input.txt','utf-8');
 const text = buffer.toString();
 
-console.log(text);
+fs.writeFileSync('output.html', text);
+//console.log(text);
