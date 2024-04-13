@@ -1,9 +1,12 @@
 'use strict';
 
-const fs = require('fs');
+//const fs = require('fs');
 
-const buffer = fs.readFileSync('input.txt','utf-8');
-const text = buffer.toString();
+const consoleArgs = process.argv;
+console.log(consoleArgs)
 
-fs.writeFileSync('output.html', text);
+//const buffer = fs.readFileSync('input.txt','utf-8');
+//const text = buffer.toString();
+
+//fs.writeFileSync('output.html', text);
 //console.log(text);
