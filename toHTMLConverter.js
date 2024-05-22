@@ -8,19 +8,19 @@ const toHTMLConverter = (text) => {
 
 const errMDCheck = (text) => {
     if (/\*\*`_([^`]+?)_`\*\*/.test(text)) {
-        throw new Error('Invalid input: Lines with the pattern are not allowed.');
+        throw new Error('Invalid markup: Lines with the pattern are not allowed.');
     }
     if (/^_.*[^_]$/.test(text)) {
-        throw new Error('aaaaaaaaaaa');
+        throw new Error('Invalid markup: part of text beings with _ but not ends with it');
     }
     if (/^[A-Za-z0-9].*_$/.test(text)) {
-        throw new Error('aaaaaaaaaaa2');
+        throw new Error('Invalid markup: part of text endss with _ but not begins with it');
     }
     if (/^[**].*[^**]$/.test(text)) {
-        throw new Error('aaaaaaaaaaa');
+        throw new Error('Invalid markup: part of text beings with ** but not ends with it');
     }
     if (/^[A-Za-z0-9].*[**]$/.test(text)) {
-        throw new Error('aaaaaaaaaaa2');
+        throw new Error('Invalid markup: part of text endss with ** but not begins with it');
     } 
 }
 
