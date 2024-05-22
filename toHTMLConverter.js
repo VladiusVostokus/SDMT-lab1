@@ -1,9 +1,16 @@
 'use strict';
 
 const toHTMLConverter = (text) => {
+    errMDCheck(text)
     const formed = replaceAllBold(text);
     return formed;
 };
+
+const errMDCheck = (text) => {
+    if (/\*\*`_([^`]+?)_`\*\*/.test(text)) {
+        throw new Error('Invalid input: Lines with the pattern are not allowed.');
+    }
+}
 
 const replaceBold = (text) => {
     const boldRegExp = /\w*\*\*.*\*\*$/; 
@@ -27,3 +34,21 @@ const replaceAllBold = (text) => {
 };
 
 module.exports = toHTMLConverter;
+
+/*
+const convertBold = (text) => {
+    const boldRegExp = /\w*\*\*.*\*\*$/g;
+    const matchedInfo = text.match(boldRegExp);
+    let resultText;
+    let isStart = true;
+    
+    if (isStart) {
+        resultText = resultText.replace("**","<b>");
+        isStart = false;
+    }
+    else {
+        resultText = resultText.replace("**","</b>");
+    }
+};
+*/
+
