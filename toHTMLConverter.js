@@ -15,6 +15,12 @@ const errMDCheck = (text) => {
     }
     if (/^[A-Za-z0-9].*_$/.test(text)) {
         throw new Error('aaaaaaaaaaa2');
+    }
+    if (/^[**].*[^**]$/.test(text)) {
+        throw new Error('aaaaaaaaaaa');
+    }
+    if (/^[A-Za-z0-9].*[**]$/.test(text)) {
+        throw new Error('aaaaaaaaaaa2');
     } 
 }
 
