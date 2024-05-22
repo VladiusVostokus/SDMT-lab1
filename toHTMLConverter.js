@@ -10,6 +10,12 @@ const errMDCheck = (text) => {
     if (/\*\*`_([^`]+?)_`\*\*/.test(text)) {
         throw new Error('Invalid input: Lines with the pattern are not allowed.');
     }
+    if (/^_.*[^_]$/.test(text)) {
+        throw new Error('aaaaaaaaaaa');
+    }
+    if (/^[A-Za-z0-9].*_$/.test(text)) {
+        throw new Error('aaaaaaaaaaa2');
+    } 
 }
 
 const replaceBold = (text) => {
