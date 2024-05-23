@@ -2,7 +2,8 @@
 
 const toHTMLConverter = (text) => {
     errMDCheck(text)
-    const formed = replaceAllBold(text);
+    const formedBold = replaceAllBold(text);
+    const formed = replaceAllItalic(formedBold);
     return formed;
 };
 
@@ -42,6 +43,27 @@ const replaceAllBold = (text) => {
         const boldRes = replaceBold(resultText);
         if(boldRes === null) return resultText;
         resultText = boldRes;
+    }
+};
+
+const replaceItalic = (text) => {
+    const italicRegExp = /_.*_/; 
+    const matchedInfo = text.match(italicRegExp);
+    if (matchedInfo !== null) {
+        const replacedStart = text.replace('_','<i>');
+        const replacedEnd = replacedStart.replace('_','</i>');
+        return replacedEnd;
+    }
+    return null;
+};
+
+
+const replaceAllItalic = (text) => {
+    let resultText = text;
+    while (true) {
+        const italicRes = replaceItalic(resultText);
+        if(italicRes === null) return resultText;
+        resultText = italicRes;
     }
 };
 
