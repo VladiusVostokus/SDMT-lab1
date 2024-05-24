@@ -69,20 +69,4 @@ const replaceAllItalic = (text) => {
 
 module.exports = toHTMLConverter;
 
-/*
-const convertBold = (text) => {
-    const boldRegExp = /\w*\*\*.*\*\*$/g;
-    const matchedInfo = text.match(boldRegExp);
-    let resultText;
-    let isStart = true;
-    
-    if (isStart) {
-        resultText = resultText.replace("**","<b>");
-        isStart = false;
-    }
-    else {
-        resultText = resultText.replace("**","</b>");
-    }
-};
-*/
 
