@@ -17,10 +17,10 @@ const errMDCheck = (text) => {
     if (/^[A-Za-z0-9].*_$/.test(text)) {
         throw new Error('Invalid markup: part of text endss with _ but not begins with it');
     }
-    if (/^[**].*[^**]$/.test(text)) {
+    if (/^[\*\*].*[^\*\*]$/.test(text)) {
         throw new Error('Invalid markup: part of text beings with ** but not ends with it');
     }
-    if (/^[A-Za-z0-9].*[**]$/.test(text)) {
+    if (/^[A-Za-z0-9].*[\*\*]$/.test(text)) {
         throw new Error('Invalid markup: part of text endss with ** but not begins with it');
     } 
 }
@@ -66,6 +66,24 @@ const replaceAllItalic = (text) => {
         resultText = italicRes;
     }
 };
+
+let matched = []
+
+const setMatch = (match) => {
+    matched = match
+}
+
+const findAndSavePref = (text) => {
+    result = text;
+    const rx4 = /```.*?```/g;
+    const matchedParts = result.match(rx4);
+    setMatch(matchedParts);
+    const saver = "@@@";
+    for (const part of matchedParts) {
+        result = result.replace(part, saver);
+    }
+    return result;
+}
 
 module.exports = toHTMLConverter;
 
