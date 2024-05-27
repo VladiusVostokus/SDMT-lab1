@@ -74,7 +74,7 @@ const setMatch = (match) => {
 }
 
 const findAndSavePref = (text) => {
-    result = text;
+    let result = text;
     const rx4 = /```.*?```/g;
     const matchedParts = result.match(rx4);
     setMatch(matchedParts);
@@ -92,6 +92,14 @@ const replaceAllPref = (mathedParts) => {
         part = part.replace('```','<pre>');
         part = part.replace('```','</pre>');
         result[i] = part;
+    }
+    return result;
+}
+
+const restorePrefs = (text, matchedParts) => {
+    let result = text;
+    for (const part of matchedParts) {
+        result = result.replace("@@@", part);
     }
     return result;
 }
