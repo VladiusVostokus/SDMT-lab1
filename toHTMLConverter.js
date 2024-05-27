@@ -85,6 +85,17 @@ const findAndSavePref = (text) => {
     return result;
 }
 
+const replaceAllPref = (mathedParts) => {
+    const result = mathedParts.slice(0);
+    for (let i = 0; i < mathedParts.length; i++) {
+        let part = result[i];
+        part = part.replace('```','<pre>');
+        part = part.replace('```','</pre>');
+        result[i] = part;
+    }
+    return result;
+}
+
 module.exports = toHTMLConverter;
 
 
