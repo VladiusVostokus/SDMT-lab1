@@ -1,7 +1,7 @@
 'use strict';
 
 const toHTMLConverter = (text) => {
-    errMDCheck(text)
+    errMDCheck(text);
     const formedBold = replaceAllBold(text);
     const formed = replaceAllItalic(formedBold);
     return formed;
@@ -23,7 +23,7 @@ const errMDCheck = (text) => {
     if (/^[A-Za-z0-9].*[\*\*]$/.test(text)) {
         throw new Error('Invalid markup: part of text endss with ** but not begins with it');
     } 
-}
+};
 
 const replaceBold = (text) => {
     const boldRegExp = /\w*\*\*.*\*\*$/; 
@@ -67,11 +67,11 @@ const replaceAllItalic = (text) => {
     }
 };
 
-let matched = []
+let matched = [];
 
 const setMatch = (match) => {
-    matched = match
-}
+    matched = match;
+};
 
 const findAndSavePref = (text) => {
     let result = text;
@@ -83,7 +83,7 @@ const findAndSavePref = (text) => {
         result = result.replace(part, saver);
     }
     return result;
-}
+};
 
 const replaceAllPref = (mathedParts) => {
     const result = mathedParts.slice(0);
@@ -94,7 +94,7 @@ const replaceAllPref = (mathedParts) => {
         result[i] = part;
     }
     return result;
-}
+};
 
 const restorePrefs = (text, matchedParts) => {
     let result = text;
@@ -102,7 +102,7 @@ const restorePrefs = (text, matchedParts) => {
         result = result.replace("@@@", part);
     }
     return result;
-}
+};
 
 module.exports = toHTMLConverter;
 
