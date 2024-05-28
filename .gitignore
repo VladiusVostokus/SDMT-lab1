@@ -1,2 +1,6 @@
 *.md
 *.html
+1.js
+2.js
+node_modules
+package-lock.json
