@@ -26,7 +26,7 @@ const errMDCheck = (text) => {
 };
 
 const replaceBold = (text) => {
-    const boldRegExp = /\w*\*\*.*\*\*$/; 
+    const boldRegExp = /\*\*([^\s*][^\*]*[^\s*])\*\*/; 
     const matchedInfo = text.match(boldRegExp);
     if (matchedInfo !== null) {
         const replacedStart = text.replace('**','<b>');
