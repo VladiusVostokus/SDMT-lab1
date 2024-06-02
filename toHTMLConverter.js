@@ -47,7 +47,7 @@ const replaceAllBold = (text) => {
 };
 
 const replaceItalic = (text) => {
-    const italicRegExp = /_.*_/; 
+    const italicRegExp = /_([^\s*][^\*]*[^\s*])_/; 
     const matchedInfo = text.match(italicRegExp);
     if (matchedInfo !== null) {
         const replacedStart = text.replace('_','<i>');
