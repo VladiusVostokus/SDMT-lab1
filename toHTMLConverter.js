@@ -2,8 +2,11 @@
 
 const toHTMLConverter = (text) => {
     errMDCheck(text);
-    const formedBold = replaceAllBold(text);
-    const formed = replaceAllItalic(formedBold);
+    const prefRes = findAndSavePref(text);
+    const replacedPrefs = replaceAllPref(matched);
+    const formedBold = replaceAllBold(prefRes);
+    const formedItalic = replaceAllItalic(formedBold);
+    const formed = restorePrefs(formedItalic, replacedPrefs);
     return formed;
 };
 
