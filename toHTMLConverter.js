@@ -78,8 +78,9 @@ const setMatch = (match) => {
 
 const findAndSavePref = (text) => {
     let result = text;
-    const rx4 = /```.*?```/g;
-    const matchedParts = result.match(rx4);
+    const prefRegExp = /```[\s\S]*?```/g;
+    //first RegExp - /```.*?```/g
+    const matchedParts = result.match(prefRegExp);
     setMatch(matchedParts);
     const saver = "@@@";
     for (const part of matchedParts) {
