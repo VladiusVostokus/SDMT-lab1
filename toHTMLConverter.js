@@ -6,7 +6,8 @@ const toHTMLConverter = (text) => {
     const replacedPrefs = replaceAllPref(matched);
     const formedBold = replaceAllBold(prefRes);
     const formedItalic = replaceAllItalic(formedBold);
-    const formed = restorePrefs(formedItalic, replacedPrefs);
+    const formedMono = replaceAllMono(formedItalic);
+    const formed = restorePrefs(formedMono, replacedPrefs);
     return formed;
 };
 
@@ -67,6 +68,27 @@ const replaceAllItalic = (text) => {
         const italicRes = replaceItalic(resultText);
         if(italicRes === null) return resultText;
         resultText = italicRes;
+    }
+};
+
+const replaceMono = (text) => {
+    const monoRegExp = /`([^\s*][^\*]*[^\s*])`/; 
+    const matchedInfo = text.match(monoRegExp);
+    if (matchedInfo !== null) {
+        const replacedStart = text.replace('`','<tt>');
+        const replacedEnd = replacedStart.replace('`','</tt>');
+        return replacedEnd;
+    }
+    return null;
+};
+
+
+const replaceAllMono = (text) => {
+    let resultText = text;
+    while (true) {
+        const monoRes = replaceMono(resultText);
+        if(monoRes === null) return resultText;
+        resultText = monoRes;
     }
 };
 
