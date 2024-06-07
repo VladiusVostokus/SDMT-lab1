@@ -2,11 +2,17 @@
 
 const toHTMLConverter = (text) => {
     errMDCheck(text);
-    const prefRes = findAndSavePref(text);
-    const replacedPrefs = replaceAllPref(matched);
+    const pargRes = findAndSavePargs(text);
+    const replacedPars = replaceAllParg(matchedPars);
+    const formedPargs = restorePargs(pargRes,replacedPars);
+
+    const prefRes = findAndSavePref(formedPargs);
+    const replacedPrefs = replaceAllPref(matchedPrefs);
+
     const formedBold = replaceAllBold(prefRes);
     const formedItalic = replaceAllItalic(formedBold);
     const formedMono = replaceAllMono(formedItalic);
+
     const formed = restorePrefs(formedMono, replacedPrefs);
     return formed;
 };
@@ -92,10 +98,10 @@ const replaceAllMono = (text) => {
     }
 };
 
-let matched = [];
+let matchedPrefs = [];
 
-const setMatch = (match) => {
-    matched = match;
+const setMatchedPrefs = (match) => {
+    matchedPrefs = match;
 };
 
 const findAndSavePref = (text) => {
@@ -103,7 +109,7 @@ const findAndSavePref = (text) => {
     const prefRegExp = /```[\s\S]*?```/g;
     //first RegExp - /```.*?```/g
     const matchedParts = result.match(prefRegExp);
-    setMatch(matchedParts);
+    setMatchedPrefs(matchedParts);
     const saver = "@@@";
     for (const part of matchedParts) {
         result = result.replace(part, saver);
@@ -127,6 +133,44 @@ const restorePrefs = (text, matchedParts) => {
     for (const part of matchedParts) {
         result = result.replace("@@@", part);
     }
+    return result;
+};
+
+let matchedPars = [];
+
+const setMatchedPargs = (match) => {
+    matchedPars = match;
+};
+
+const findAndSavePargs = (text) => {
+    let result = text;
+    const parRegExp = /([^\r\n]+(?:\r?\n[^\r\n]+)*)/g;
+    const matchedParts = result.match(parRegExp);
+    setMatchedPargs(matchedParts);
+    const saver = "&&&";
+    for (const part of matchedParts) {
+        result = result.replace(part, saver);
+    }
+    return result;
+};
+
+const replaceAllParg = (mathedParts) => {
+    const result = mathedParts.slice(0);
+    for (let i = 0; i < mathedParts.length; i++) {
+        let part = result[i];
+        part = "<p>" + part;
+        part = part + "</p>\n";
+        result[i] = part;
+    }
+    return result;
+};
+
+const restorePargs = (text, matchedParts) => {
+    let result = text;
+    for (const part of matchedParts) {
+        result = result.replace("&&&", part);
+    }
+    result = result.replaceAll("\n\n",'');
     return result;
 };
 
