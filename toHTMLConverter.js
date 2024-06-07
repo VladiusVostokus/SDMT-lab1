@@ -5,8 +5,9 @@ const toHTMLConverter = (text) => {
     const pargRes = findAndSavePargs(text);
     const replacedPars = replaceAllParg(matchedPars);
     const formedPargs = restorePargs(pargRes,replacedPars);
+    const removedEmptyLines = removeEmptyLines(formedPargs)
 
-    const prefRes = findAndSavePref(formedPargs);
+    const prefRes = findAndSavePref(removedEmptyLines);
     const replacedPrefs = replaceAllPref(matchedPrefs);
 
     const formedBold = replaceAllBold(prefRes);
@@ -170,10 +171,14 @@ const restorePargs = (text, matchedParts) => {
     for (const part of matchedParts) {
         result = result.replace("&&&", part);
     }
-    result = result.replaceAll("\n\n",'');
     return result;
 };
 
+const removeEmptyLines = (text) => {
+    const lines = text.split('\n');
+    const noEmpryLines = lines.filter((line) => line.trim() !== '');
+    const resultString = noEmpryLines.join('\n');
+    return resultString;
+};
+
 module.exports = toHTMLConverter;
-
-
