@@ -22,6 +22,9 @@ const errMDCheck = (text) => {
     if (/\*\*`_([^`]+?)_`\*\*/.test(text)) {
         throw new Error('Invalid markup: Lines with the pattern are not allowed.');
     }
+    if (/``` *[^\s]| *[^\s] *q```/.test(text)) { 
+        throw new Error('Invalid markup: incorrect preformatting');
+    }
     if (/^_.*[^_]$/.test(text)) {
         throw new Error('Invalid markup: part of text beings with _ but not ends with it');
     }
@@ -108,7 +111,6 @@ const setMatchedPrefs = (match) => {
 const findAndSavePref = (text) => {
     let result = text;
     const prefRegExp = /```[\s\S]*?```/g;
-    //first RegExp - /```.*?```/g
     const matchedParts = result.match(prefRegExp);
     setMatchedPrefs(matchedParts);
     const saver = "@@@";
