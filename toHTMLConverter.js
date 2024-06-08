@@ -2,15 +2,15 @@
 
 const toHTMLConverter = (text) => {
     errMDCheck(text);
-    const pargRes = findAndSavePargs(text);
+    const prefRes = findAndSavePref(text);
+    const replacedPrefs = replaceAllPref(matchedPrefs);
+
+    const pargRes = findAndSavePargs(prefRes);
     const replacedPars = replaceAllParg(matchedPars);
     const formedPargs = restorePargs(pargRes,replacedPars);
     const removedEmptyLines = removeEmptyLines(formedPargs)
 
-    const prefRes = findAndSavePref(removedEmptyLines);
-    const replacedPrefs = replaceAllPref(matchedPrefs);
-
-    const formedBold = replaceAllBold(prefRes);
+    const formedBold = replaceAllBold(removedEmptyLines);
     const formedItalic = replaceAllItalic(formedBold);
     const formedMono = replaceAllMono(formedItalic);
 
