@@ -14,8 +14,12 @@ const toHTMLConverter = (text) => {
     const formedItalic = replaceAllItalic(formedBold);
     const formedMono = replaceAllMono(formedItalic);
 
-    const formed = restorePrefs(formedMono, replacedPrefs);
-    return formed;
+    if (replacedPrefs === null) {
+        return formedMono;
+    }
+
+    const formedPrefs = restorePrefs(formedMono, replacedPrefs);
+    return formedPrefs;
 };
 
 const errMDCheck = (text) => {
@@ -112,6 +116,9 @@ const findAndSavePref = (text) => {
     let result = text;
     const prefRegExp = /```[\s\S]*?```/g;
     const matchedPrefParts = result.match(prefRegExp);
+    if (matchedPrefParts === null) {
+        return result
+    }
     setMatchedPrefs(matchedPrefParts);
     const saver = "@@@";
     for (const part of matchedPrefParts) {
@@ -148,7 +155,7 @@ const setMatchedPargs = (match) => {
 const findAndSavePargs = (text) => {
     let result = text;
     const parRegExp = /([^\r\n]+(?:\r?\n[^\r\n]+)*)/g;
-    const  mathedPargParts = result.match(parRegExp);
+    const mathedPargParts = result.match(parRegExp);
     setMatchedPargs(mathedPargParts);
     const saver = "&&&";
     for (const part of mathedPargParts) {
