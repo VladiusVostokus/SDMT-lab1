@@ -32,6 +32,6 @@ To output result in console:
 node .\main.js /path/to/valid/markdown
 ```
 
-Revert commit here => [https://github.com/VladiusVostokus/SDMT-lab1/commit/6f77044474ae2a0048b271a04783670ef5522a7b](url)
+Revert commit here => [link](https://github.com/VladiusVostokus/SDMT-lab1/commit/6f77044474ae2a0048b271a04783670ef5522a7b)
 
 
