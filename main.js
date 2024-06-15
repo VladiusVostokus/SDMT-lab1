@@ -9,10 +9,11 @@ let buffer, text, result;
 try {
     buffer = fs.readFileSync(input,'utf-8');
     text = buffer.toString();
-    result = toHTMLConverter(text);
 } catch(err){
     console.error("invalid markdown", err)
 }
+
+result = toHTMLConverter(text);
 
 if (consoleArgs.includes('--out')) {
     try {

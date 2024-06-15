@@ -3,7 +3,10 @@
 const errMDCheck = require('./errMDCheck.js')
 
 const toHTMLConverter = (text) => {
-    errMDCheck(text);
+    
+    let err = errMDCheck(text);
+    if (err !== undefined) throw err ;
+
     const prefRes = findAndSavePref(text);
     const replacedPrefs = replaceAllPref(matchedPrefs);
 
