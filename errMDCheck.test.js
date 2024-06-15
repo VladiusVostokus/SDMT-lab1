@@ -41,6 +41,27 @@ for (const t of prefTests) {
     });
 }
 
+const boldTests = [
+    { description: "Right bold", value: `**text**` , expected: undefined },
+
+    { description: "Right bold 2", value: ` ** ` , expected: undefined },
+
+    { description: "Starts but not ends bold", value: ` **text ` , 
+        expected: new Error('Invalid markup: part of text beings with ** but not ends with it')},
+
+    { description: "Ends but not starts bold", value: ` text** `, 
+        expected: new Error('Invalid markup: part of text endss with ** but not begins with it')},
+    
+    { description: "Ends but not starts + correc part", value: ` dasdas** **dasdsad** `, 
+        expected: new Error('Invalid markup: part of text endss with ** but not begins with it')},
+];
+
+for (const t of boldTests) {
+    test(t.description, () => {
+        expect(errMDCheck(t.value)).toEqual(t.expected);
+    });
+}
+
 const italicTests = [
     { description: "Right italic", value: `_text_` , expected: undefined },
 
