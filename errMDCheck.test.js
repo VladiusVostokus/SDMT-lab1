@@ -35,3 +35,23 @@ for (const t of prefTests) {
         expect(errMDCheck(t.value)).toEqual(t.expected);
     });
 }
+
+const italicTests = [
+    { description: "Right italic", value: `_text_` , expected: undefined },
+
+    { description: "Right italic 2", value: ` _ ` , expected: undefined },
+
+    { description: "Right italic 3", value: ` dadsa_dadas ` , expected: undefined },
+
+    { description: "Starts but not ends italic", value: ` _text ` , 
+        expected: new Error('Invalid markup: part of text beings with _ but not ends with it')},
+
+    { description: "Ends but not starts italic", value: ` text_ `, 
+        expected: new Error('Invalid markup: part of text endss with _ but not begins with it')},
+];
+
+for (const t of italicTests) {
+    test(t.description, () => {
+        expect(errMDCheck(t.value)).toEqual(t.expected);
+    });
+}
