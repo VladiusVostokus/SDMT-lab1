@@ -2,6 +2,11 @@
 
 const errMDCheck = require('./errMDCheck.js');
 
+test("Nested markup", () => {
+    expect(errMDCheck(" **`_text_`** "))
+    .toEqual(new Error('Invalid markup: Lines with the pattern are not allowed.'));
+});
+
 const prefTests = [
     { description: "Right Preformatted", value: "```\nSometext\n```" , expected: undefined },
 
