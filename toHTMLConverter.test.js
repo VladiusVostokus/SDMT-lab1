@@ -12,12 +12,12 @@ const tests = [
     { description: "Simple preformatted", value:"```\naaa\n```", expected: "<p><pre>\naaa\n</pre></p>"},
 
     { description: "Complicated", 
-        value:"```\nSome are born great\n\n**dada**\n\n```\nвфівфі\nвфівіф\n**dasda**\n\nsome achieve , `dasdas`\nand have _greatness_ thrust them.", 
+        value:"```\nSome are born great\n\n**da da**\n\n```\nвфівфі\nвфівіф\n**dasda**\n\nsome achieve , `dasdas`\nand have _greatness_ thrust them.", 
         expected:
 `<p><pre>
 Some are born great
 
-**dada**
+**da da**
 
 </pre>
 вфівфі

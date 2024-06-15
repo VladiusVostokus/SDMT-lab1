@@ -42,9 +42,11 @@ for (const t of prefTests) {
 }
 
 const boldTests = [
-    { description: "Right bold", value: `**text**` , expected: undefined },
+    { description: "Right bold", value: ` **text** ` , expected: undefined },
 
     { description: "Right bold 2", value: ` ** ` , expected: undefined },
+
+    { description: "Right bold", value: ` **te xt** ` , expected: undefined },
 
     { description: "Starts but not ends bold", value: ` **text ` , 
         expected: new Error('Invalid markup: part of text beings with ** but not ends with it')},
@@ -68,6 +70,8 @@ const italicTests = [
     { description: "Right italic 2", value: ` _ ` , expected: undefined },
 
     { description: "Right italic 3", value: ` dadsa_dadas ` , expected: undefined },
+
+    { description: "Right italic", value: `_te xt_` , expected: undefined },
 
     { description: "Starts but not ends italic", value: ` _text ` , 
         expected: new Error('Invalid markup: part of text beings with _ but not ends with it')},

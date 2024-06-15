@@ -29,7 +29,7 @@ const toHTMLConverter = (text) => {
 
 
 const replaceBold = (text) => {
-    const boldRegExp = /\*\*([^\s*][^\s]*)\*\*/; 
+    const boldRegExp = /\*\*[^\s*]\w*\s*\w*[^\s*]\*\*/; 
     const matchedInfo = text.match(boldRegExp);
     if (matchedInfo !== null) {
         const replacedStart = text.replace('**','<b>');
@@ -50,7 +50,7 @@ const replaceAllBold = (text) => {
 };
 
 const replaceItalic = (text) => {
-    const italicRegExp = /_([^\s*][^\s]*)_/; 
+    const italicRegExp = /_[^\s*]\w*\s*\w*[^\s*]_/; 
     const matchedInfo = text.match(italicRegExp);
     if (matchedInfo !== null) {
         const replacedStart = text.replace('_','<i>');
@@ -71,7 +71,7 @@ const replaceAllItalic = (text) => {
 };
 
 const replaceMono = (text) => {
-    const monoRegExp = /`([^\s*][^\s]*)`/; 
+    const monoRegExp = /`[^\s*]\w*\s*\w*[^\s*]`/; 
     const matchedInfo = text.match(monoRegExp);
     if (matchedInfo !== null) {
         const replacedStart = text.replace('`','<tt>');
