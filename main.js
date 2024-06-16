@@ -10,7 +10,7 @@ try {
     buffer = fs.readFileSync(input,'utf-8');
     text = buffer.toString();
 } catch(err){
-    console.error("invalid markdown", err)
+    console.error("invalid markdown", err);
 }
 
 result = toHTMLConverter(text);
@@ -21,9 +21,15 @@ if (consoleArgs.includes('--out')) {
     const output = consoleArgs[outIndex + 1]
     fs.writeFileSync(output, result);
     } catch(err) {
-        console.error("invalid html", err)
+        console.error("invalid html", err);
     }
 }
 else {
+    const formatIndex = consoleArgs.findIndex((arg) => arg.startsWith('--format='));
+    if (formatIndex !== -1) {
+        const format = consoleArgs[formatIndex];
+        const formatType = format.split('=');
+        console.log(formatType[1]);
+    }
     console.log(result);
 }
