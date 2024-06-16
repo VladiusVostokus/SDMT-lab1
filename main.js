@@ -29,7 +29,12 @@ else {
     if (formatIndex !== -1) {
         const format = consoleArgs[formatIndex];
         const formatType = format.split('=');
-        console.log(formatType[1]);
+        if (formatType[1] === 'html') console.log(result);
+        else {
+            if (formatType[1] === 'format') console.log('\x1b[7m%s\x1b[0m', result);
+            else console.error("Wrong format for --format=");
+            process.exit(0);
+        }
     }
-    console.log(result);
+    console.log('\x1b[7m%s\x1b[0m', result);
 }
