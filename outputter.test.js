@@ -2,10 +2,10 @@
 
 const outputter = require("./outputter");
 
-const consoleArgs = ['node','.//main.js','.//input.md'];
-const consoleArgsFormat = ['node','.//main.js','.//input.md','--format=format'];
-const consoleArgsHTML = ['node','.//main.js','.//input.md','--format=html'];
-const consoleArgsErr = ['node','.//main.js','.//input.md','--format=txt'];
+const consoleArgs = ['node','main.js','input.md'];
+const consoleArgsFormat = ['node','main.js','input.md','--format=format'];
+const consoleArgsHTML = ['node','main.js','input.md','--format=html'];
+const consoleArgsErr = ['node','main.js','input.md','--format=txt'];
 const result = 'Result text';
 
 afterEach(() => {
