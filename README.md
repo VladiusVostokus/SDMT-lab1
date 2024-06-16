@@ -2,13 +2,18 @@
 
 ## How to use
 
-To use code, you need Node.js to be installed on your PC.
-It's better to use newest LTS version.
+> To use code, you need Node.js 18.x+ to be installed on your PC.
 
 Clone this repo to use on local machine.
 ```
 git clone https://github.com/VladiusVostokus/SDMT-lab1
 ```
+
+than white
+```
+npm i
+```
+to install dependencies
 
 White in your code
 ```JS
@@ -25,11 +30,20 @@ Function will return converted html text.
 
 To use whole program to convert write in console:
 ```
-This will create or modify existing myfile.html
-node .\main.js /path/to/valid/markdown --out myfile.html
+# This will create or modify existing myfile.html
+node main.js \\path\\to\\valid\\markdown --out myfile.html
 
-To output result in console:
-node .\main.js /path/to/valid/markdown
+# To output result in console:
+node main.js /path/to/valid/markdown
+# use keys
+--format=value to choose format of output
+#if value = formatted - output in reversed mode
+#if value = html - output in html mode
+```
+
+To run tests
+```
+npm test
 ```
 
 Revert commit here => [link](https://github.com/VladiusVostokus/SDMT-lab1/commit/6f77044474ae2a0048b271a04783670ef5522a7b)
