@@ -3,6 +3,8 @@
 const errMDCheck = require('./errMDCheck.js')
 
 const toHTMLConverter = (text) => {
+
+    if (text.trim() === '') return '';
     
     let err = errMDCheck(text);
     if (err !== undefined) throw err ;

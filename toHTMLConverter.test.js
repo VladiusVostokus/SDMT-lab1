@@ -3,6 +3,8 @@
 const toHTMLConverter = require('./toHTMLConverter.js');
 
 const tests = [
+    { description: "Empty string", value: " ", expected: ""},
+
     { description: "Simple bold", value: "**aaa**", expected: "<p><b>aaa</b></p>"},
 
     { description: "Simple italic", value: "_aaa_", expected: "<p><i>aaa</i></p>"},
