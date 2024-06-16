@@ -51,3 +51,8 @@ npm test
 Revert commit here => [link](https://github.com/VladiusVostokus/SDMT-lab1/commit/6f77044474ae2a0048b271a04783670ef5522a7b)
 Failed test here => [link](https://github.com/VladiusVostokus/SDMT-lab1/commit/e35734b634dcae1ec2cb35d0c7257ec094e4f9ab)
 
+## Conclusions
+Writing test for my program has different degrees of benefit depends on tested modules. When I wrote first tests (for converter and error checker) I generaly knew about the behavior of my program, so testing functionality wasn't very useful at this stage. But it helps me to make components of my program more modular. When I added and fixed some functionality tests help me, so I haven't to check program by lauching it from console every time. When I wrote test for outputter, In my opinion it's easier to test it in console, than write test, but this was the first time I wrote test to check that some part was called with these arguments and it was interenting. 
+CI, in my opinion isn't suitable for this project, because I can just write "npm test" and get the results. Also, I don't want to push to repo every commit, however it's nice to see the successful results of the build.
+
+To sum up, I get practice in writing tests, they help me to make my program more modular, help check fixes and new features and make my program simpler to refactor, so writing tests was useful for me.
