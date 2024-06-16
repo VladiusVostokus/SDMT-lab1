@@ -2,47 +2,48 @@
 
 ## How to use
 
-> To use code, you need Node.js 18.x+ to be installed on your PC.
+### To use code, you need Node.js 18.x+ to be installed on your PC.
 
 Clone this repo to use on local machine.
-```
+```bash
 git clone https://github.com/VladiusVostokus/SDMT-lab1
 ```
 
-than white
-```
+than write
+```bash
 npm i
 ```
 to install dependencies
 
-White in your code
+Write in your code
 ```JS
 import toHTMLConverter from './toHTMLConverter.js';
 or
 const toHTMLConverter = require('./toHTMLConverter.js');
 ```
 
-To use it as a function separately white in your code:
+To use it as a function separately write in your code:
 ```JS
 const htmlResult = toHTMLConverter(markdownText);
 ```
 Function will return converted html text.
 
 To use whole program to convert write in console:
-```
+```bash
 # This will create or modify existing myfile.html
 node main.js \\path\\to\\valid\\markdown --out myfile.html
 
 # To output result in console:
 node main.js /path/to/valid/markdown
+
 # use keys
 --format=value to choose format of output
-#if value = formatted - output in reversed mode
-#if value = html - output in html mode
+# if value = formatted - output in reversed mode
+# if value = html - output in html mode
 ```
 
 To run tests
-```
+```bash
 npm test
 ```
 
