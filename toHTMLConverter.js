@@ -30,17 +30,20 @@ const toHTMLConverter = (text) => {
 };
 
 
-const replaceBold = (text) => {
-    const boldRegExp = /\*\*[^\s*]\w*\s*\w*[^\s*]\*\*/; 
-    const matchedInfo = text.match(boldRegExp);
-    if (matchedInfo !== null) {
-        const replacedStart = text.replace('**','<b>');
-        const replacedEnd = replacedStart.replace('**','</b>');
-        return replacedEnd;
+const replaceFabric = (regExp, toReplace, replaceStart, replaceEnd) => {
+    return (text) => {
+        const matchedInfo = text.match(regExp);
+        if (matchedInfo !== null) {
+            const replacedStart = text.replace(toReplace, replaceStart);
+            const replacedEnd = replacedStart.replace(toReplace,replaceEnd);
+            return replacedEnd;
+        }
+        return null;
     }
-    return null;
 };
 
+const boldRegExp = /\*\*[^\s*]\w*\s*\w*[^\s*]\*\*/;
+const replaceBold = replaceFabric(boldRegExp,'**', '<b>','</b>');
 
 const replaceAllBold = (text) => {
     let resultText = text;
