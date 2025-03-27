@@ -43,7 +43,12 @@ const replaceFabric = (regExp, toReplace, replaceStart, replaceEnd) => {
 };
 
 const boldRegExp = /\*\*[^\s*]\w*\s*\w*[^\s*]\*\*/;
+const italicRegExp = /_[^\s*]\w*\s*\w*[^\s*]_/; 
+const monoRegExp = /`[^\s*]\w*\s*\w*[^\s*]`/; 
+
 const replaceBold = replaceFabric(boldRegExp,'**', '<b>','</b>');
+const replaceItalic = replaceFabric(italicRegExp,'_','<i>','</i>');
+const replaceMono = replaceFabric(monoRegExp,'`','<tt>','</tt>')
 
 const replaceAllBold = (text) => {
     let resultText = text;
@@ -54,18 +59,6 @@ const replaceAllBold = (text) => {
     }
 };
 
-const replaceItalic = (text) => {
-    const italicRegExp = /_[^\s*]\w*\s*\w*[^\s*]_/; 
-    const matchedInfo = text.match(italicRegExp);
-    if (matchedInfo !== null) {
-        const replacedStart = text.replace('_','<i>');
-        const replacedEnd = replacedStart.replace('_','</i>');
-        return replacedEnd;
-    }
-    return null;
-};
-
-
 const replaceAllItalic = (text) => {
     let resultText = text;
     while (true) {
@@ -74,18 +67,6 @@ const replaceAllItalic = (text) => {
         resultText = italicRes;
     }
 };
-
-const replaceMono = (text) => {
-    const monoRegExp = /`[^\s*]\w*\s*\w*[^\s*]`/; 
-    const matchedInfo = text.match(monoRegExp);
-    if (matchedInfo !== null) {
-        const replacedStart = text.replace('`','<tt>');
-        const replacedEnd = replacedStart.replace('`','</tt>');
-        return replacedEnd;
-    }
-    return null;
-};
-
 
 const replaceAllMono = (text) => {
     let resultText = text;
